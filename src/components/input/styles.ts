@@ -15,7 +15,8 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 6,
-    marginVertical: 18
+    marginBottom: 24,
+    marginTop: 30
   },
   input: {
     fontSize: 16

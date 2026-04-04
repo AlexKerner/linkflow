@@ -17,12 +17,18 @@ export const styles = StyleSheet.create({
     alignItems: "center"
   },
   title: {
-    fontSize: 20,
-    fontWeight: "bold",
+    fontSize: 22,
+    fontWeight: "900",
     color: colors.light.primaryBlue
   },
   logo: {
-    height: 70,
+    height: 50,
     width: 70
+  },
+  links: {
+    marginTop: 40
+  },
+  linksContent: {
+    gap: 16
   }
 })
