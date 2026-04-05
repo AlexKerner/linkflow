@@ -70,5 +70,17 @@ export const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 16,
     fontWeight: "500"
+  },
+  drop: {
+    backgroundColor: colors.light.bgSecondary,
+    borderWidth: 0,
+    borderRadius: 12,
+    paddingHorizontal: 17,
+    height: 50,
+  },
+  dropContent: {
+    borderWidth: 0,
+    backgroundColor: colors.light.bgPrimary,
+    elevation: .1
   }
 })

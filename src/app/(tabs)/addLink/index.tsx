@@ -1,9 +1,32 @@
 import { Header } from "@/src/components/header";
 import { InputForm } from "@/src/components/inputForm";
+import { colors } from "@/src/styles/colors";
+import { categories } from "@/src/utils/categories";
+import { MaterialIcons } from "@expo/vector-icons";
+import React, { useState } from "react";
 import { Pressable, Text, View } from "react-native";
+import DropDownPicker from "react-native-dropdown-picker";
 import { styles } from "./styles";
 
 export default function AddLink() {
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(null);
+
+  const [items, setItems] = useState(
+    categories.map((cat) => ({
+      label: cat.name,
+      value: cat.id,
+      icon: () =>
+        cat.icon ? (
+          <MaterialIcons
+            name={cat.icon}
+            size={18}
+            color={colors.light.fontBold}
+          />
+        ) : null,
+    })),
+  );
+
   return (
     <View style={styles.container}>
       <Header />
@@ -22,7 +45,19 @@ export default function AddLink() {
           </View>
           <View style={styles.formContent}>
             <Text style={styles.label}>Categoria</Text>
-            <InputForm placeholder="https://www.example.com" />
+            <DropDownPicker
+              open={open}
+              value={value}
+              items={items}
+              setOpen={setOpen}
+              setValue={setValue}
+              setItems={setItems}
+              style={styles.drop}
+              dropDownContainerStyle={styles.dropContent}
+              placeholderStyle={{ color: colors.light.fontMedium }}
+              textStyle={{ color: colors.light.fontBold, fontSize: 16 }}
+              placeholder="Selecione uma categoria"
+            />
           </View>
           <View style={styles.options}>
             <Pressable

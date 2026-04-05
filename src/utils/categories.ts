@@ -5,7 +5,7 @@ import { MaterialIcons } from "@expo/vector-icons"
 export type Category = {
   id: string,
   name: string,
-  icon: keyof typeof MaterialIcons.glyphMap
+  icon?: keyof typeof MaterialIcons.glyphMap
 }
 
 export const categories: Category[] = [
