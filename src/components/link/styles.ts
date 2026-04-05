@@ -9,7 +9,8 @@ export const styles = StyleSheet.create({
     borderRadius: 12,
     paddingHorizontal: 15,
     paddingTop: 20,
-    maxHeight: 140
+    maxHeight: 140,
+    elevation: .2
   },
   content: {
     paddingBottom: 20,

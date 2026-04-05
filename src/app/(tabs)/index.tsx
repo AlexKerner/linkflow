@@ -1,22 +1,20 @@
+import { Categories } from "@/src/components/categories";
+import { Header } from "@/src/components/header";
+import { InputSearch } from "@/src/components/inputSearch";
+import { Link } from "@/src/components/link";
 import { useState } from "react";
-import { FlatList, Image, Text, View } from "react-native";
-import { Categories } from "../components/categories";
-import { Input } from "../components/input";
-import { Link } from "../components/link";
-import { styles } from "./styles";
+import { FlatList, View } from "react-native";
+import { styles } from "../styles";
 
 export default function Index() {
   const [category, setCategory] = useState("Todos");
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.title}>LinkFlow</Text>
-        <Image source={require("../assets/icon.png")} style={styles.logo} />
-      </View>
-      <Input placeholder="Pesquisar seu link..." icon="search" />
+      <Header />
+      <InputSearch placeholder="Pesquisar seu link..." icon="search" />
       <Categories showAll={true} selected={category} onChange={setCategory} />
       <FlatList
-        data={["1", "2", "3"]}
+        data={["1", "2", "3", "4"]}
         keyExtractor={(item) => item}
         renderItem={() => (
           <Link

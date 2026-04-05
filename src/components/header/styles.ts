@@ -1,14 +1,9 @@
+import { colors } from "@/src/styles/colors";
 import { StyleSheet } from "react-native";
-import { colors } from "../styles/colors";
 
 
 
 export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 50,
-    paddingHorizontal: 20
-  },
   header: {
     width: "100%",
     display: "flex",
@@ -25,11 +20,4 @@ export const styles = StyleSheet.create({
     height: 50,
     width: 70
   },
-  links: {
-    marginTop: 40,
-    maxHeight: 430
-  },
-  linksContent: {
-    gap: 16
-  }
 })

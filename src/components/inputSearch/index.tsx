@@ -7,7 +7,7 @@ type Props = TextInputProps & {
   icon: keyof typeof MaterialIcons.glyphMap;
 };
 
-export function Input({ icon, ...rest }: Props) {
+export function InputSearch({ icon, ...rest }: Props) {
   return (
     <View style={styles.container}>
       <MaterialIcons name={icon} color={colors.light.fontMedium} size={20} />
