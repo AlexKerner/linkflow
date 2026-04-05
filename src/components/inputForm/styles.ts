@@ -8,8 +8,6 @@ export const styles = StyleSheet.create({
     height: 50,
     backgroundColor: colors.light.bgSecondary,
     borderRadius: 12,
-    borderWidth: 1,
-    borderColor: "#91b4e437",
     paddingHorizontal: 12,
     display: "flex",
     flexDirection: "row",

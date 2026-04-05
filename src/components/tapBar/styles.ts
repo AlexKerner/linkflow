@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
     borderRadius: 14,
     marginHorizontal: 20,
     paddingVertical: 10,
-    paddingHorizontal: 5,
+    paddingHorizontal: 4,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 10 },
     shadowRadius: 10,
@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 12,
     paddingVertical: 8,
-    marginHorizontal: 4,
+    marginHorizontal: 3,
   },
   tabBarItemActive: {
     backgroundColor: colors.light.bgTertiary,
