@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     marginTop: 40,
     marginBottom: 30,
     maxWidth: 320,
-    fontSize: 30,
+    fontSize: 32,
     fontWeight: "600",
     color: colors.light.fontBold
   },
@@ -32,7 +32,8 @@ export const styles = StyleSheet.create({
     gap: 8
   },
   label: {
-    color: colors.light.fontBold,
+    fontSize: 16,
+    color: colors.light.fontMedium,
     fontWeight: "500"
   },
   options: {
@@ -59,7 +60,9 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.light.primaryBlue,
     borderRadius: 12,
     paddingVertical: 18,
-    paddingHorizontal: 35
+    paddingHorizontal: 35,
+    shadowColor: colors.light.primaryBlue,
+    elevation: 8
   },
   buttonCancelText: {
     fontSize: 16,

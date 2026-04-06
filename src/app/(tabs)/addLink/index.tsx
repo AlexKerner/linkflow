@@ -26,7 +26,6 @@ export default function AddLink() {
         ) : null,
     })),
   );
-
   return (
     <View style={styles.container}>
       <Header />
