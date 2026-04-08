@@ -7,8 +7,9 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 50,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
   },
+
   header: {
     width: "100%",
     display: "flex",
@@ -27,7 +28,7 @@ export const styles = StyleSheet.create({
   },
   links: {
     marginTop: 40,
-    maxHeight: 430
+    maxHeight: 410
   },
   linksContent: {
     gap: 16

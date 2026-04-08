@@ -16,6 +16,7 @@ export default function Index() {
       <InputSearch placeholder="Pesquisar seu link..." icon="search" />
       <Categories showAll={true} selected={category} onChange={setCategory} />
       <FlatList
+        showsVerticalScrollIndicator={false}
         data={["1", "2", "3", "4"]}
         keyExtractor={(item) => item}
         renderItem={() => (
