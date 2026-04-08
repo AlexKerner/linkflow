@@ -8,7 +8,7 @@ type Props = PressableProps & {
 };
 
 export function Icon({ name, isSelected, ...rest }: Props) {
-  const elevation = isSelected ? 5 : 0;
+  const elevation = isSelected ? 4 : 0;
   const shadowColor = isSelected ? colors.light.primaryBlue : "#fff";
   const backgroundColor = isSelected
     ? colors.light.primaryBlue
