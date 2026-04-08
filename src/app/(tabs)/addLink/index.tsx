@@ -40,11 +40,11 @@ export default function AddLink() {
         Adicionar Novo Link
       </Text>
       <KeyboardAvoidingView
-        behavior={Platform.OS === "android" ? "padding" : undefined}
+        behavior={Platform.OS === "android" || "ios" ? "padding" : undefined}
         style={{ flex: 1 }}
       >
         <ScrollView
-          contentContainerStyle={{ paddingBottom: 80 }}
+          contentContainerStyle={{ paddingBottom: 130 }}
           showsVerticalScrollIndicator={false}
         >
           <View style={styles.content}>

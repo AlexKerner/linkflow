@@ -5,7 +5,7 @@ import { Link } from "@/src/components/link";
 import { ModalLink } from "@/src/components/modal";
 import { useState } from "react";
 import { FlatList, View } from "react-native";
-import { styles } from "../styles";
+import { styles } from "./styles";
 
 export default function Index() {
   const [category, setCategory] = useState("Todos");
