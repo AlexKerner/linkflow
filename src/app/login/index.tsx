@@ -1,11 +1,17 @@
+import { signInWithGoogle } from "@/src/services/google/googleAuth";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { Image, Pressable, Text, View } from "react-native";
 import { styles } from "./styles";
 
 export default function Login() {
-  function handleLogin() {
-    router.navigate("/(tabs)");
+  async function handleLogin() {
+    try {
+      await signInWithGoogle();
+      router.navigate("/(tabs)");
+    } catch (error) {
+      console.log(error);
+    }
   }
   return (
     <View style={styles.container}>
