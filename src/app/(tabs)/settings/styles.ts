@@ -24,8 +24,8 @@ export const styles = StyleSheet.create({
   },
   logo: {
     borderRadius: 100,
-    width: 120,
-    height: 120
+    width: 150,
+    height: 150
   },
   name: {
     marginTop: 14,
@@ -35,13 +35,13 @@ export const styles = StyleSheet.create({
     textAlign: "center"
   },
   email: {
-    marginTop: 14,
-    fontSize: 12,
+    marginTop: 8,
+    fontSize: 13,
     fontWeight: "500",
     color: colors.light.fontMedium
   },
   footer: {
-    marginTop: 50,
+    marginTop: 15,
     width: "100%",
     display: "flex",
     alignItems: "center",
@@ -56,7 +56,7 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     paddingVertical: 20,
     gap: 12,
-    elevation: 5,
+    elevation: 3,
     backgroundColor: colors.light.fontBold
   },
   logout: {

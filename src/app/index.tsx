@@ -1,11 +1,9 @@
-import { Redirect } from "expo-router";
+import { ActivityIndicator, View } from "react-native";
 
 export default function Index() {
-  const isLogged = false; // depois você troca por auth real
-
-  if (!isLogged) {
-    return <Redirect href="/login" />;
-  } else {
-    return <Redirect href="/(tabs)" />;
-  }
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <ActivityIndicator />
+    </View>
+  );
 }
