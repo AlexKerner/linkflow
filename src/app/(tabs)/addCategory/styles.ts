@@ -49,7 +49,7 @@ export const styles = StyleSheet.create({
   },
   selectCategory: {
     gap: 10,
-    height: 220
+    height: 200
   },
   footer: {
     width: "100%"

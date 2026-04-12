@@ -54,10 +54,11 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    paddingVertical: 20,
+    paddingVertical: 18,
     gap: 12,
     elevation: 3,
-    backgroundColor: colors.light.fontBold
+    backgroundColor: colors.light.fontBold,
+    shadowColor: colors.light.primaryBlue,
   },
   logout: {
     marginTop: 10,
@@ -67,18 +68,19 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    paddingVertical: 20,
+    paddingVertical: 18,
     backgroundColor: colors.light.bgPrimary,
     gap: 12,
+
     elevation: 2
   },
   themeText: {
     color: "#fff",
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: "500"
   },
   logoutText: {
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: "500"
   }
 })

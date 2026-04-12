@@ -1,10 +1,15 @@
 import { Header } from "@/src/components/header";
 import { InputForm } from "@/src/components/inputForm";
+import { getCategories } from "@/src/services/firestore/categories";
+import { createLink } from "@/src/services/firestore/links";
 import { colors } from "@/src/styles/colors";
-import { categories } from "@/src/utils/categories";
-import { MaterialIcons } from "@expo/vector-icons";
-import React, { useState } from "react";
+import { Category } from "@/src/utils/categories";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useFocusEffect } from "expo-router";
+import React, { useCallback, useState } from "react";
 import {
+  ActivityIndicator,
+  Alert,
   KeyboardAvoidingView,
   Platform,
   Pressable,
@@ -16,23 +21,61 @@ import DropDownPicker from "react-native-dropdown-picker";
 import { styles } from "./styles";
 
 export default function AddLink() {
+  const [isLoading, setIsLoading] = useState(false);
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(null);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [url, setUrl] = useState("");
+  const [category, setCategory] = useState<string | null>(null);
+  const [categories, setCategories] = useState<Category[]>([]);
 
-  const [items, setItems] = useState(
-    categories.map((cat) => ({
-      label: cat.name,
-      value: cat.id,
-      icon: () =>
-        cat.icon ? (
-          <MaterialIcons
-            name={cat.icon}
-            size={18}
-            color={colors.light.fontBold}
-          />
-        ) : null,
-    })),
+  const items = categories.map((cat) => ({
+    label: cat.name,
+    value: cat.id,
+    icon: () =>
+      cat.icon ? (
+        <MaterialCommunityIcons
+          name={cat.icon as any}
+          size={18}
+          color={colors.light.fontBold}
+        />
+      ) : null,
+  }));
+
+  async function handleCreateLink() {
+    setIsLoading(true);
+    if (!title || !description || !url) {
+      Alert.alert("Preencha todos os campos.");
+      setIsLoading(false);
+    }
+    if (!category) {
+      Alert.alert("Selecione uma categoria.");
+      setIsLoading(false);
+      return;
+    }
+    try {
+      await createLink({ title, url, description, categoryId: category });
+      setIsLoading(false);
+      Alert.alert("Link criado com sucesso.");
+      console.log("Link criado.");
+      (setTitle(""), setDescription(""));
+      setUrl("");
+      setCategory("");
+    } catch (error) {
+      console.log("Erro ao criar link.", error);
+    }
+  }
+
+  useFocusEffect(
+    useCallback(() => {
+      async function loadCategories() {
+        const data = await getCategories();
+        setCategories(data);
+      }
+      loadCategories();
+    }, []),
   );
+
   return (
     <View style={styles.container}>
       <Header />
@@ -44,22 +87,32 @@ export default function AddLink() {
         style={{ flex: 1 }}
       >
         <ScrollView
-          contentContainerStyle={{ paddingBottom: 130 }}
+          contentContainerStyle={{ paddingBottom: 90 }}
           showsVerticalScrollIndicator={false}
         >
           <View style={styles.content}>
             <View style={styles.form}>
               <View style={styles.formContent}>
                 <Text style={styles.label}>Nome</Text>
-                <InputForm placeholder="Ex.: Receita de Brownie" />
+                <InputForm
+                  value={title}
+                  placeholder="Ex.: Receita de Brownie"
+                  onChangeText={setTitle}
+                />
               </View>
               <View style={styles.formContent}>
                 <Text style={styles.label}>URL</Text>
-                <InputForm placeholder="https://www.receitabrownie.com" />
+                <InputForm
+                  value={url}
+                  placeholder="https://www.receitabrownie.com"
+                  onChangeText={setUrl}
+                />
               </View>
               <View style={styles.formContent}>
                 <Text style={styles.label}>Descrição</Text>
                 <InputForm
+                  value={description}
+                  onChangeText={setDescription}
                   style={{ height: 100 }}
                   textAlignVertical="top"
                   multiline
@@ -73,11 +126,10 @@ export default function AddLink() {
                 <Text style={styles.label}>Categoria</Text>
                 <DropDownPicker
                   open={open}
-                  value={value}
+                  value={category}
                   items={items}
                   setOpen={setOpen}
-                  setValue={setValue}
-                  setItems={setItems}
+                  setValue={setCategory}
                   style={styles.drop}
                   listMode="SCROLLVIEW"
                   dropDownContainerStyle={styles.dropContent}
@@ -96,11 +148,12 @@ export default function AddLink() {
                 >
                   <Text style={styles.buttonCancelText}>Cancelar</Text>
                 </Pressable>
-                <Pressable
-                  style={styles.buttonSave}
-                  onPress={() => console.log("salvou")}
-                >
-                  <Text style={styles.buttonSaveText}>Salvar Link</Text>
+                <Pressable style={styles.buttonSave} onPress={handleCreateLink}>
+                  {!isLoading ? (
+                    <Text style={styles.buttonSaveText}>Salvar Link</Text>
+                  ) : (
+                    <ActivityIndicator color="#fff" size={28} />
+                  )}
                 </Pressable>
               </View>
             </View>

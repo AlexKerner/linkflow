@@ -43,13 +43,13 @@ export default function Settings() {
         <Pressable style={styles.theme}>
           <MaterialCommunityIcons
             name="theme-light-dark"
-            size={28}
+            size={26}
             color="#fff"
           />
           <Text style={styles.themeText}>Mudar tema</Text>
         </Pressable>
         <Pressable style={styles.logout} onPress={confirmLogout}>
-          <MaterialCommunityIcons name="logout" size={28} color="#b22321" />
+          <MaterialCommunityIcons name="logout" size={26} color="#b22321" />
           <Text style={styles.logoutText}>Encerrar sessão</Text>
         </Pressable>
       </View>

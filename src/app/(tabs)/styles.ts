@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
   },
   links: {
     marginTop: 40,
-    maxHeight: 410
+    maxHeight: 425
   },
   linksContent: {
     gap: 16

@@ -17,6 +17,7 @@ type Props = ModalProps & {
   description: string;
   url: string;
   category: string;
+  icon: string;
   onDeleteLink: () => void;
   onOpenLink: () => void;
   onPress: () => void;
@@ -26,6 +27,7 @@ export function ModalLink({
   title,
   description,
   url,
+  icon,
   category,
   onDeleteLink,
   onOpenLink,
@@ -60,7 +62,7 @@ export function ModalLink({
             <View style={styles.details}>
               <View style={styles.detailsCategory}>
                 <MaterialCommunityIcons
-                  name="folder-outline"
+                  name={icon as any}
                   size={12}
                   color={colors.light.fontBold}
                 />
@@ -89,6 +91,7 @@ export function ModalLink({
             <View style={styles.footer}>
               <Options icon="open-in-new" name="Abrir Link" variant="primary" />
               <Options
+                onPress={onDeleteLink}
                 icon="trash-can-outline"
                 name="Excluir Link"
                 variant="secondary"

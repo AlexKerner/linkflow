@@ -59,5 +59,12 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 20,
     fontSize: 11,
     color: colors.light.fontMedium
+  },
+  login: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 8
   }
 })

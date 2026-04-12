@@ -16,6 +16,7 @@ export const styles = StyleSheet.create({
     color: colors.light.fontBold
   },
   content: {
+    flex: 1,
     backgroundColor: "#fff",
     padding: 30,
     borderRadius: 12,

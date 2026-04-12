@@ -1,22 +1,23 @@
 import { colors } from "@/src/styles/colors";
-import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import { Text, TouchableOpacity, View } from "react-native";
 import { styles } from "./styles";
 
 type Props = {
   name: string;
   url: string;
+  icon: string;
   onDetails: () => void;
   onOpenLink: () => void;
 };
 
-export function Link({ name, url, onDetails, onOpenLink }: Props) {
+export function Link({ name, url, icon, onDetails, onOpenLink }: Props) {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
         <View style={styles.contentTitle}>
-          <MaterialIcons
-            name="folder"
+          <MaterialCommunityIcons
+            name={icon as any}
             size={22}
             color={colors.light.fontMedium}
           />
