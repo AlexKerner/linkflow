@@ -5,8 +5,9 @@ import { Link } from "@/src/components/link";
 import { ModalLink } from "@/src/components/modal";
 import { getCategories } from "@/src/services/firestore/categories";
 import { deleteLink, getLinks } from "@/src/services/firestore/links";
-import { colors } from "@/src/styles/colors";
+import { styles } from "@/src/styles/index/styles";
 import { Category } from "@/src/utils/categories";
+import { colors } from "@/src/utils/colors";
 import { Link as Links } from "@/src/utils/links";
 import { useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
@@ -18,7 +19,6 @@ import {
   Text,
   View,
 } from "react-native";
-import { styles } from "./styles";
 
 export default function Index() {
   const [category, setCategory] = useState<string | null>(null);
@@ -136,11 +136,23 @@ export default function Index() {
           }}
           style={styles.links}
           contentContainerStyle={styles.linksContent}
-          ListEmptyComponent={() => (
-            <Text style={{ color: colors.light.fontBold }}>
-              Não há nenhum link com essa categoria ainda.
-            </Text>
-          )}
+          ListEmptyComponent={() => {
+            if (links.length === 0) {
+              return (
+                <Text style={{ color: colors.light.fontBold }}>
+                  Ainda não foi criado nenhum link. Vá para a página
+                  "Categorias", crie sua primeira categoria para que possa ser
+                  criado um link, e depois vá para "Novo link", para criar seu
+                  primeiro link.
+                </Text>
+              );
+            }
+            return (
+              <Text style={{ color: colors.light.fontBold }}>
+                Não há nenhum link com essa categoria ainda.
+              </Text>
+            );
+          }}
         />
       ) : (
         <ActivityIndicator color={colors.light.primaryBlue} size={40} />

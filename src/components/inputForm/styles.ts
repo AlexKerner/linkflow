@@ -1,4 +1,4 @@
-import { colors } from "@/src/styles/colors";
+import { colors } from "@/src/utils/colors";
 import { StyleSheet } from "react-native";
 
 

@@ -1,4 +1,5 @@
-import { colors } from "@/src/styles/colors";
+
+import { colors } from "@/src/utils/colors";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
@@ -7,54 +8,48 @@ export const styles = StyleSheet.create({
     paddingTop: 50,
     paddingHorizontal: 20
   },
-  headerTitle: {
+  h1: {
     marginTop: 40,
     marginBottom: 30,
     maxWidth: 320,
-    display: "flex",
-    alignItems: "flex-start",
-    justifyContent: "center",
-    gap: 8
-  },
-  h1: {
-    fontSize: 34,
+    fontSize: 32,
     fontWeight: "600",
     color: colors.light.fontBold
   },
-  subTitle: {
-    color: colors.light.fontMedium,
-    fontSize: 16,
-    lineHeight: 22
-  },
   content: {
+    flex: 1,
     backgroundColor: "#fff",
     padding: 30,
     borderRadius: 12,
     elevation: .4
+  },
+  form: {
+    display: "flex",
+    alignItems: "flex-start",
+    justifyContent: "center",
+    gap: 20
+  },
+  formContent: {
+    width: "100%",
+    gap: 8
   },
   label: {
     fontSize: 16,
     color: colors.light.fontMedium,
     fontWeight: "500"
   },
-  form: {
-    display: "flex",
-    alignItems: "flex-start",
-    justifyContent: "center",
-    gap: 24
-  },
-  formContent: {
-    width: "100%",
-    gap: 8
-  },
-  selectCategory: {
-    gap: 10,
-    height: 200
-  },
   footer: {
-    width: "100%"
+    borderTopWidth: 1,
+    borderColor: "#91b4e437",
+    paddingTop: 20,
+    marginTop: 10,
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
   },
-  button: {
+  buttonSave: {
     width: "100%",
     display: "flex",
     alignItems: "center",
@@ -65,10 +60,21 @@ export const styles = StyleSheet.create({
     shadowColor: colors.light.primaryBlue,
     elevation: 8
   },
-  buttonText: {
+  buttonSaveText: {
+    color: "#fff",
     fontSize: 16,
-    fontWeight: "500",
-    color: "#fff"
+    fontWeight: "500"
+  },
+  drop: {
+    backgroundColor: colors.light.bgSecondary,
+    borderWidth: 0,
+    borderRadius: 12,
+    paddingHorizontal: 17,
+    height: 50,
+  },
+  dropContent: {
+    borderWidth: 0,
+    backgroundColor: colors.light.bgPrimary,
+    elevation: .1
   }
-
 })

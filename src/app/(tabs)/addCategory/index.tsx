@@ -2,9 +2,9 @@ import { Header } from "@/src/components/header";
 import { Icons } from "@/src/components/icons";
 import { InputForm } from "@/src/components/inputForm";
 import { createCategory } from "@/src/services/firestore/categories";
+import { styles } from "@/src/styles/addCategory/styles";
 import { useState } from "react";
 import { Alert, Pressable, Text, View } from "react-native";
-import { styles } from "./styles";
 
 export default function AddCategory() {
   const [icon, setIcon] = useState("");

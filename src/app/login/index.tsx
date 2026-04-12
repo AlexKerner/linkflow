@@ -1,9 +1,9 @@
 import { signInWithGoogle } from "@/src/services/google/googleAuth";
+import { styles } from "@/src/styles/login/styles";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { useState } from "react";
 import { ActivityIndicator, Image, Pressable, Text, View } from "react-native";
-import { styles } from "./styles";
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState(false);

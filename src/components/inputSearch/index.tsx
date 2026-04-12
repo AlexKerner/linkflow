@@ -1,4 +1,4 @@
-import { colors } from "@/src/styles/colors";
+import { colors } from "@/src/utils/colors";
 import { MaterialIcons } from "@expo/vector-icons";
 import { TextInput, TextInputProps, View } from "react-native";
 import { styles } from "./styles";

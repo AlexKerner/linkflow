@@ -2,8 +2,9 @@ import { Header } from "@/src/components/header";
 import { InputForm } from "@/src/components/inputForm";
 import { getCategories } from "@/src/services/firestore/categories";
 import { createLink } from "@/src/services/firestore/links";
-import { colors } from "@/src/styles/colors";
+import { styles } from "@/src/styles/addLink/styles";
 import { Category } from "@/src/utils/categories";
+import { colors } from "@/src/utils/colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useFocusEffect } from "expo-router";
 import React, { useCallback, useState } from "react";
@@ -18,7 +19,6 @@ import {
   View,
 } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
-import { styles } from "./styles";
 
 export default function AddLink() {
   const [isLoading, setIsLoading] = useState(false);
@@ -87,7 +87,7 @@ export default function AddLink() {
         style={{ flex: 1 }}
       >
         <ScrollView
-          contentContainerStyle={{ paddingBottom: 90 }}
+          contentContainerStyle={{ paddingBottom: 130 }}
           showsVerticalScrollIndicator={false}
         >
           <View style={styles.content}>
@@ -138,16 +138,7 @@ export default function AddLink() {
                   placeholder="Selecione uma categoria"
                 />
               </View>
-              <View style={styles.options}>
-                <Pressable
-                  onPress={() => console.log("cancelou")}
-                  style={({ pressed }) => [
-                    styles.buttonCancel,
-                    pressed && { backgroundColor: "rgba(0,0,0,0.05)" },
-                  ]}
-                >
-                  <Text style={styles.buttonCancelText}>Cancelar</Text>
-                </Pressable>
+              <View style={styles.footer}>
                 <Pressable style={styles.buttonSave} onPress={handleCreateLink}>
                   {!isLoading ? (
                     <Text style={styles.buttonSaveText}>Salvar Link</Text>

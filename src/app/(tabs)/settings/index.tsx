@@ -1,10 +1,10 @@
 import { Header } from "@/src/components/header";
 import { auth } from "@/src/services/firebase/firebaseConfig";
+import { styles } from "@/src/styles/settings/styles";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import { signOut } from "firebase/auth";
 import { Alert, Image, Pressable, Text, View } from "react-native";
-import { styles } from "./styles";
 
 export default function Settings() {
   async function handleLogout() {

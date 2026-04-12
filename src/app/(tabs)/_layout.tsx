@@ -1,5 +1,5 @@
 import { MyTabBar } from "@/src/components/tapBar";
-import { colors } from "@/src/styles/colors";
+import { colors } from "@/src/utils/colors";
 import { Tabs } from "expo-router";
 
 export default function TabLayout() {
