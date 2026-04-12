@@ -5,20 +5,32 @@ import { Link } from "@/src/components/link";
 import { ModalLink } from "@/src/components/modal";
 import { getCategories } from "@/src/services/firestore/categories";
 import { deleteLink, getLinks } from "@/src/services/firestore/links";
+import { colors } from "@/src/styles/colors";
 import { Category } from "@/src/utils/categories";
 import { Link as Links } from "@/src/utils/links";
 import { useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
-import { Alert, FlatList, Linking, View } from "react-native";
+import {
+  ActivityIndicator,
+  Alert,
+  FlatList,
+  Linking,
+  Text,
+  View,
+} from "react-native";
 import { styles } from "./styles";
 
 export default function Index() {
-  const [category, setCategory] = useState("Todos");
+  const [category, setCategory] = useState<string | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [links, setLinks] = useState<Links[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedLink, setSelectedLink] = useState<Links | null>(null);
   const [loading, setLoading] = useState(true);
+
+  const filteredLinks = !category
+    ? links
+    : links.filter((link) => link.categoryId === category);
 
   const categoriesMap = categories.reduce(
     (acc, cat) => {
@@ -101,10 +113,10 @@ export default function Index() {
 
       <Categories showAll={true} selected={category} onChange={setCategory} />
 
-      {!loading && (
+      {!loading ? (
         <FlatList
           showsVerticalScrollIndicator={false}
-          data={links}
+          data={filteredLinks}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => {
             const category = categoriesMap[item.categoryId];
@@ -124,7 +136,14 @@ export default function Index() {
           }}
           style={styles.links}
           contentContainerStyle={styles.linksContent}
+          ListEmptyComponent={() => (
+            <Text style={{ color: colors.light.fontBold }}>
+              Não há nenhum link com essa categoria ainda.
+            </Text>
+          )}
         />
+      ) : (
+        <ActivityIndicator color={colors.light.primaryBlue} size={40} />
       )}
 
       <ModalLink
@@ -137,7 +156,7 @@ export default function Index() {
         url={selectedLink?.url ?? ""}
         category={selectedCategory?.name ?? "Sem categoria"}
         onDeleteLink={confirmDelete}
-        onOpenLink={() => console.log("Abriu")}
+        onOpenLink={() => handleOpen(selectedLink?.url || "")}
         onPress={() => {
           setShowModal(false);
           setSelectedLink(null);

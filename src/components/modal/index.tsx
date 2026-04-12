@@ -89,7 +89,12 @@ export function ModalLink({
               <Text style={styles.detailsDescriptionText}>{description}</Text>
             </View>
             <View style={styles.footer}>
-              <Options icon="open-in-new" name="Abrir Link" variant="primary" />
+              <Options
+                onPress={onOpenLink}
+                icon="open-in-new"
+                name="Abrir Link"
+                variant="primary"
+              />
               <Options
                 onPress={onDeleteLink}
                 icon="trash-can-outline"

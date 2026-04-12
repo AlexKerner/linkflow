@@ -7,9 +7,9 @@ import { Category } from "../category";
 import { styles } from "./styles";
 
 type Props = {
-  selected: string;
+  selected: string | null;
   showAll?: boolean;
-  onChange: (category: string) => void;
+  onChange: (category: string | null) => void;
 };
 
 export function Categories({ selected, showAll, onChange }: Props) {
@@ -28,8 +28,8 @@ export function Categories({ selected, showAll, onChange }: Props) {
       {showAll && (
         <Category
           name="Todos"
-          isSelected={"Todos" === selected}
-          onPress={() => onChange("Todos")}
+          isSelected={null === selected}
+          onPress={() => onChange(null)}
         />
       )}
 
@@ -40,8 +40,8 @@ export function Categories({ selected, showAll, onChange }: Props) {
         renderItem={({ item }) => (
           <Category
             name={item.name}
-            isSelected={item.name === selected}
-            onPress={() => onChange(item.name)}
+            isSelected={item.id === selected}
+            onPress={() => onChange(item.id)}
           />
         )}
         horizontal
