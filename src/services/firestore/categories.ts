@@ -1,6 +1,6 @@
 
 import { Category } from '@/src/utils/categories';
-import { addDoc, collection, getDocs, query, where } from 'firebase/firestore';
+import { addDoc, collection, deleteDoc, doc, getDocs, query, where } from 'firebase/firestore';
 import { auth, db } from '../firebase/firebaseConfig';
 
 export async function createCategory(name: string, icon: string) {
@@ -31,4 +31,8 @@ export async function getCategories(): Promise<Category[]> {
     id: doc.id,
     ...doc.data() as Omit<Category, "id">
   }));
+}
+
+export async function deleteCategories(id: string) {
+  await deleteDoc(doc(db, "categories", id));
 }

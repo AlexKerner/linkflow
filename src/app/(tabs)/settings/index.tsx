@@ -28,12 +28,13 @@ export default function Settings() {
     }
   }
   const user = auth.currentUser;
+  const photo = user?.photoURL?.replace(/s\d+-c/, "s400-c");
   return (
     <View style={styles.container}>
       <Header />
       <View style={styles.profile}>
         <Image
-          source={{ uri: user?.photoURL || "https://via.placeholder.com/100" }}
+          source={{ uri: photo || "https://via.placeholder.com/100" }}
           style={styles.logo}
         />
         <Text style={styles.name}>{user?.displayName}</Text>

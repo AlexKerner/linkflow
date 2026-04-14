@@ -87,7 +87,7 @@ export default function AddLink() {
         style={{ flex: 1 }}
       >
         <ScrollView
-          contentContainerStyle={{ paddingBottom: 130 }}
+          contentContainerStyle={{ paddingBottom: 110 }}
           showsVerticalScrollIndicator={false}
         >
           <View style={styles.content}>

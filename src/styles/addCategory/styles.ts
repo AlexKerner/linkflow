@@ -69,6 +69,13 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "500",
     color: "#fff"
+  },
+  categories: {
+    flex: 1,
+    marginBottom: 130
+  },
+  categoriesContent: {
+    gap: 12
   }
 
 })
