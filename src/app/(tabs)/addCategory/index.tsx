@@ -73,6 +73,7 @@ export default function AddCategory() {
     <View style={styles.container}>
       <Header />
       <FlatList
+        removeClippedSubviews
         showsVerticalScrollIndicator={false}
         ListHeaderComponent={
           <>

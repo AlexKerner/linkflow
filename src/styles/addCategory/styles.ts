@@ -52,7 +52,8 @@ export const styles = StyleSheet.create({
     height: 200
   },
   footer: {
-    width: "100%"
+    width: "100%",
+    marginTop: 10
   },
   button: {
     width: "100%",

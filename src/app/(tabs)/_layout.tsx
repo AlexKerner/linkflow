@@ -7,7 +7,7 @@ export default function TabLayout() {
     <Tabs
       tabBar={(props) => <MyTabBar {...props} />}
       screenOptions={{
-        animation: "shift",
+        animation: "none",
         headerShown: false,
         sceneStyle: {
           backgroundColor: colors.light.bgPrimary,

@@ -27,7 +27,7 @@ export const styles = StyleSheet.create({
     width: 70
   },
   links: {
-    marginTop: 40,
+    marginTop: 25,
     maxHeight: 415
   },
   linksContent: {

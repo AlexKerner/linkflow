@@ -1,5 +1,6 @@
 import { auth } from "@/src/services/firebase/firebaseConfig";
 import { Stack, router } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 
@@ -16,5 +17,15 @@ export default function RootLayout() {
     return unsubscribe;
   }, []);
 
-  return <Stack screenOptions={{ headerShown: false }} />;
+  return (
+    <>
+      <StatusBar style="dark" />
+      <Stack
+        screenOptions={{
+          headerShown: false,
+        }}
+      />
+      ;
+    </>
+  );
 }
