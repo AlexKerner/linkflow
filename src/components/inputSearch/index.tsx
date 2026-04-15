@@ -1,18 +1,20 @@
-import { colors } from "@/src/utils/colors";
+import { useTheme } from "@/src/theme/themeProvider";
 import { MaterialIcons } from "@expo/vector-icons";
 import { TextInput, TextInputProps, View } from "react-native";
-import { styles } from "./styles";
+import { createStyles } from "./styles";
 
 type Props = TextInputProps & {
   icon: keyof typeof MaterialIcons.glyphMap;
 };
 
 export function InputSearch({ icon, ...rest }: Props) {
+  const { theme } = useTheme();
+  const styles = createStyles(theme);
   return (
     <View style={styles.container}>
-      <MaterialIcons name={icon} color={colors.light.fontMedium} size={20} />
+      <MaterialIcons name={icon} color={theme.fontMedium} size={20} />
       <TextInput
-        placeholderTextColor={colors.light.fontMedium}
+        placeholderTextColor={theme.fontMedium}
         {...rest}
         style={styles.input}
       />

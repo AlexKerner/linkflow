@@ -1,12 +1,11 @@
-import { colors } from "@/src/utils/colors";
 import { StyleSheet } from "react-native";
 
 
-export const styles = StyleSheet.create({
+export const createStyles = (theme: any) => StyleSheet.create({
   container: {
     width: "100%",
     height: 60,
-    backgroundColor: colors.light.bgSecondary,
+    backgroundColor: theme.bgSecondary,
     borderRadius: 12,
     borderWidth: 1,
     borderColor: "#91b4e437",

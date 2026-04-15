@@ -1,7 +1,7 @@
-import { colors } from "@/src/utils/colors";
+import { useTheme } from "@/src/theme/themeProvider";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import { Text, TouchableOpacity, View } from "react-native";
-import { styles } from "./styles";
+import { createStyles } from "./styles";
 
 type Props = {
   name: string;
@@ -12,6 +12,9 @@ type Props = {
 };
 
 export function Link({ name, url, icon, onDetails, onOpenLink }: Props) {
+  const { theme } = useTheme();
+  const styles = createStyles(theme);
+
   return (
     <View style={styles.container}>
       <View style={styles.content}>
@@ -19,23 +22,19 @@ export function Link({ name, url, icon, onDetails, onOpenLink }: Props) {
           <MaterialCommunityIcons
             name={icon as any}
             size={22}
-            color={colors.light.fontMedium}
+            color={theme.fontMedium}
           />
           <Text style={styles.title} numberOfLines={2} ellipsizeMode="tail">
             {name}
           </Text>
         </View>
         <TouchableOpacity onPress={onDetails}>
-          <MaterialIcons
-            name="more-vert"
-            size={20}
-            color={colors.light.fontMedium}
-          />
+          <MaterialIcons name="more-vert" size={20} color={theme.fontMedium} />
         </TouchableOpacity>
       </View>
       <View style={styles.footer}>
         <View style={styles.contentFooter}>
-          <MaterialIcons name="link" size={20} color="#3d618c8d" />
+          <MaterialIcons name="link" size={20} color={theme.fontMedium} />
           <Text style={styles.url} numberOfLines={1} ellipsizeMode="tail">
             {url}
           </Text>
@@ -44,7 +43,7 @@ export function Link({ name, url, icon, onDetails, onOpenLink }: Props) {
           <MaterialIcons
             name="keyboard-arrow-right"
             size={25}
-            color={colors.light.fontMedium}
+            color={theme.fontMedium}
           />
         </TouchableOpacity>
       </View>

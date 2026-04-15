@@ -1,7 +1,7 @@
-import { colors } from "@/src/utils/colors";
+import { useTheme } from "@/src/theme/themeProvider";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Pressable, PressableProps, Text } from "react-native";
-import { styles } from "./styles";
+import { createStyles } from "./styles";
 
 type Props = PressableProps & {
   name: string;
@@ -10,13 +10,21 @@ type Props = PressableProps & {
 };
 
 export function Options({ name, icon, variant = "primary", ...rest }: Props) {
+  const { theme } = useTheme();
+  const styles = createStyles(theme);
+  const shadowColor = variant === "primary" ? theme.primaryBlue : "transparent";
   const backgroundColor =
-    variant === "primary" ? colors.light.primaryBlue : "#fff";
+    variant === "primary" ? theme.primaryBlue : theme.bgCardPrimary;
   const elevation = variant === "primary" ? 5 : 0;
   return (
     <Pressable
       {...rest}
-      style={[styles.container, { backgroundColor }, { elevation }]}
+      style={[
+        styles.container,
+        { backgroundColor },
+        { elevation },
+        { shadowColor },
+      ]}
     >
       <MaterialCommunityIcons
         name={icon}

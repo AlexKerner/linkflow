@@ -1,8 +1,8 @@
-import { colors } from "@/src/utils/colors";
+import { useTheme } from "@/src/theme/themeProvider";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import { Text, TouchableOpacity, View } from "react-native";
-import { styles } from "./styles";
+import { createStyles } from "./styles";
 
 export function MyTabBar({
   state,
@@ -23,6 +23,8 @@ export function MyTabBar({
       <MaterialCommunityIcons name="cog-outline" size={25} {...props} />
     ),
   };
+  const { theme } = useTheme();
+  const styles = createStyles(theme);
   return (
     <View style={styles.tapBar}>
       {state.routes.map((route, index) => {
@@ -60,16 +62,12 @@ export function MyTabBar({
           >
             {IconComponent && (
               <IconComponent
-                color={
-                  isFocused ? colors.light.primaryBlue : colors.light.fontMedium
-                }
+                color={isFocused ? theme.primaryBlue : theme.fontMedium}
               />
             )}
             <Text
               style={{
-                color: isFocused
-                  ? colors.light.primaryBlue
-                  : colors.light.fontMedium,
+                color: isFocused ? theme.primaryBlue : theme.fontMedium,
                 fontSize: 14,
               }}
             >

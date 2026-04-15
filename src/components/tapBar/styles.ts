@@ -1,16 +1,15 @@
-import { colors } from "@/src/utils/colors";
 import { StyleSheet } from "react-native";
 
 
 
-export const styles = StyleSheet.create({
+export const createStyles = (theme: any) => StyleSheet.create({
   tapBar: {
     position: "absolute",
     bottom: 30,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: "#fff",
+    backgroundColor: theme.bgCardPrimary,
     borderRadius: 14,
     marginHorizontal: 20,
     paddingVertical: 10,
@@ -31,6 +30,6 @@ export const styles = StyleSheet.create({
     marginHorizontal: 3,
   },
   tabBarItemActive: {
-    backgroundColor: colors.light.bgTertiary,
+    backgroundColor: theme.bgTertiary,
   }
 })

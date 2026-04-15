@@ -1,4 +1,4 @@
-import { colors } from "@/src/utils/colors";
+import { useTheme } from "@/src/theme/themeProvider";
 import { icons } from "@/src/utils/icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { FlatList, View } from "react-native";
@@ -11,6 +11,7 @@ type Props = {
 };
 
 export function Icons({ selected, onChange }: Props) {
+  const { theme } = useTheme();
   return (
     <View style={styles.all}>
       <FlatList
@@ -28,9 +29,7 @@ export function Icons({ selected, onChange }: Props) {
                 name={item.icon}
                 size={24}
                 color={
-                  selected === item.name
-                    ? colors.light.bgPrimary
-                    : colors.light.fontMedium
+                  selected === item.name ? theme.bgPrimary : theme.fontMedium
                 }
               />
             </Icon>

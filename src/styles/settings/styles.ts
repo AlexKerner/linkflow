@@ -1,15 +1,14 @@
 
-import { colors } from "@/src/utils/colors";
 import { StyleSheet } from "react-native";
 
-export const styles = StyleSheet.create({
+export const createStyles = (theme: any) => StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 50,
     paddingHorizontal: 20
   },
   profile: {
-    backgroundColor: "#fff",
+    backgroundColor: theme.bgCardPrimary,
     padding: 30,
     borderRadius: 12,
     elevation: .4,
@@ -21,7 +20,7 @@ export const styles = StyleSheet.create({
     marginTop: 40,
     fontSize: 34,
     fontWeight: "700",
-    color: colors.light.fontBold
+    color: theme.fontBold
   },
   logo: {
     borderRadius: 100,
@@ -32,14 +31,14 @@ export const styles = StyleSheet.create({
     marginTop: 14,
     fontSize: 22,
     fontWeight: "600",
-    color: colors.light.fontBold,
+    color: theme.fontBold,
     textAlign: "center"
   },
   email: {
     marginTop: 8,
     fontSize: 13,
     fontWeight: "500",
-    color: colors.light.fontMedium
+    color: theme.fontMedium
   },
   footer: {
     marginTop: 15,
@@ -58,8 +57,8 @@ export const styles = StyleSheet.create({
     paddingVertical: 18,
     gap: 12,
     elevation: 3,
-    backgroundColor: colors.light.fontBold,
-    shadowColor: colors.light.primaryBlue,
+    backgroundColor: theme.fontBold,
+    shadowColor: theme.primaryBlue,
   },
   logout: {
     marginTop: 10,
@@ -70,18 +69,18 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     paddingVertical: 18,
-    backgroundColor: colors.light.bgPrimary,
+    backgroundColor: theme.bgPrimary,
     gap: 12,
-
     elevation: 2
   },
   themeText: {
-    color: "#fff",
+    color: theme.fontContrast,
     fontSize: 17,
     fontWeight: "500"
   },
   logoutText: {
     fontSize: 17,
-    fontWeight: "500"
+    fontWeight: "500",
+    color: theme.fontBold
   }
 })

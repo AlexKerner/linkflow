@@ -7,9 +7,9 @@ import {
   deleteCategories,
   getCategories,
 } from "@/src/services/firestore/categories";
-import { styles } from "@/src/styles/addCategory/styles";
+import { createStyles } from "@/src/styles/addCategory/styles";
+import { useTheme } from "@/src/theme/themeProvider";
 import { Category } from "@/src/utils/categories";
-import { colors } from "@/src/utils/colors";
 import { useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
 import { Alert, FlatList, Pressable, Text, View } from "react-native";
@@ -18,6 +18,8 @@ export default function AddCategory() {
   const [icon, setIcon] = useState("");
   const [name, setName] = useState("");
   const [categories, setCategories] = useState<Category[]>([]);
+  const { theme } = useTheme();
+  const styles = createStyles(theme);
 
   async function handleCreateCategory() {
     if (!name || !icon) {
@@ -124,7 +126,7 @@ export default function AddCategory() {
         contentContainerStyle={styles.categoriesContent}
         ListEmptyComponent={() => {
           return (
-            <Text style={{ color: colors.light.fontBold }}>
+            <Text style={{ color: theme.fontBold }}>
               Não há nenhum link com essa categoria ainda.
             </Text>
           );

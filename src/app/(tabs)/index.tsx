@@ -5,7 +5,8 @@ import { Link } from "@/src/components/link";
 import { ModalLink } from "@/src/components/modal";
 import { getCategories } from "@/src/services/firestore/categories";
 import { deleteLink, getLinks } from "@/src/services/firestore/links";
-import { styles } from "@/src/styles/index/styles";
+import { createStyles } from "@/src/styles/index/styles";
+import { useTheme } from "@/src/theme/themeProvider";
 import { Category } from "@/src/utils/categories";
 import { colors } from "@/src/utils/colors";
 import { Link as Links } from "@/src/utils/links";
@@ -27,6 +28,9 @@ export default function Index() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedLink, setSelectedLink] = useState<Links | null>(null);
   const [loading, setLoading] = useState(true);
+
+  const { theme } = useTheme();
+  const styles = createStyles(theme);
 
   const filteredLinks = !category
     ? links

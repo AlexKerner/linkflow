@@ -1,7 +1,6 @@
-import { colors } from "@/src/utils/colors";
 import { StyleSheet } from "react-native";
 
-export const styles = StyleSheet.create({
+export const createStyles = (theme: any) => StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 50,
@@ -19,22 +18,22 @@ export const styles = StyleSheet.create({
   h1: {
     fontSize: 34,
     fontWeight: "600",
-    color: colors.light.fontBold
+    color: theme.fontBold
   },
   subTitle: {
-    color: colors.light.fontMedium,
+    color: theme.fontMedium,
     fontSize: 16,
     lineHeight: 22
   },
   content: {
-    backgroundColor: "#fff",
+    backgroundColor: theme.bgCardPrimary,
     padding: 30,
     borderRadius: 12,
     elevation: .4
   },
   label: {
     fontSize: 16,
-    color: colors.light.fontMedium,
+    color: theme.fontMedium,
     fontWeight: "500"
   },
   form: {
@@ -60,16 +59,16 @@ export const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: colors.light.primaryBlue,
+    backgroundColor: theme.primaryBlue,
     paddingVertical: 20,
     borderRadius: 12,
-    shadowColor: colors.light.primaryBlue,
+    shadowColor: theme.primaryBlue,
     elevation: 8
   },
   buttonText: {
     fontSize: 16,
     fontWeight: "500",
-    color: "#fff"
+    color: theme.fontContrast
   },
   categories: {
     flex: 1,

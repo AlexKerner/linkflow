@@ -1,4 +1,4 @@
-import { colors } from "@/src/utils/colors";
+import { useTheme } from "@/src/theme/themeProvider";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { BlurView } from "expo-blur";
 import {
@@ -10,7 +10,7 @@ import {
   View,
 } from "react-native";
 import { Options } from "../options";
-import { styles } from "./styles";
+import { createStyles } from "./styles";
 
 type Props = ModalProps & {
   title: string;
@@ -34,10 +34,12 @@ export function ModalLink({
   onPress,
   ...rest
 }: Props) {
+  const { theme } = useTheme();
+  const styles = createStyles(theme);
   return (
     <Modal {...rest}>
       <BlurView
-        intensity={80}
+        intensity={120}
         style={StyleSheet.absoluteFillObject}
         tint="dark"
       >
@@ -53,7 +55,7 @@ export function ModalLink({
                 <View style={styles.modalHeaderDetailText}>
                   <MaterialCommunityIcons
                     name="information-outline"
-                    color="#fff"
+                    color={theme.fontContrast}
                   />
                   <Text style={styles.modalHeaderText}>DETALHES DO LINK</Text>
                 </View>
@@ -64,7 +66,7 @@ export function ModalLink({
                 <MaterialCommunityIcons
                   name={icon as any}
                   size={12}
-                  color={colors.light.fontBold}
+                  color={theme.fontBold}
                 />
                 <Text style={styles.detailsCategoryText}>{category}</Text>
               </View>
@@ -74,7 +76,7 @@ export function ModalLink({
                 <MaterialCommunityIcons
                   name="earth"
                   size={15}
-                  color={colors.light.fontBold}
+                  color={theme.fontMedium}
                 />
                 <Text
                   style={styles.detailsLinkText}

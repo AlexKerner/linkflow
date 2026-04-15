@@ -1,12 +1,14 @@
-import { colors } from "@/src/utils/colors";
+import { useTheme } from "@/src/theme/themeProvider";
 import { TextInput, TextInputProps, View } from "react-native";
-import { styles } from "./styles";
+import { createStyles } from "./styles";
 
 export function InputForm({ ...rest }: TextInputProps) {
+  const { theme } = useTheme();
+  const styles = createStyles(theme);
   return (
     <View style={styles.container}>
       <TextInput
-        placeholderTextColor={colors.light.fontMedium}
+        placeholderTextColor={theme.fontMedium}
         {...rest}
         style={styles.input}
       />

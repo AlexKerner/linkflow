@@ -2,7 +2,8 @@ import { Header } from "@/src/components/header";
 import { InputForm } from "@/src/components/inputForm";
 import { getCategories } from "@/src/services/firestore/categories";
 import { createLink } from "@/src/services/firestore/links";
-import { styles } from "@/src/styles/addLink/styles";
+import { createStyles } from "@/src/styles/addLink/styles";
+import { useTheme } from "@/src/theme/themeProvider";
 import { Category } from "@/src/utils/categories";
 import { colors } from "@/src/utils/colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -28,6 +29,9 @@ export default function AddLink() {
   const [url, setUrl] = useState("");
   const [category, setCategory] = useState<string | null>(null);
   const [categories, setCategories] = useState<Category[]>([]);
+
+  const { theme } = useTheme();
+  const styles = createStyles(theme);
 
   const items = categories.map((cat) => ({
     label: cat.name,
@@ -133,8 +137,8 @@ export default function AddLink() {
                   style={styles.drop}
                   listMode="SCROLLVIEW"
                   dropDownContainerStyle={styles.dropContent}
-                  placeholderStyle={{ color: colors.light.fontMedium }}
-                  textStyle={{ color: colors.light.fontBold, fontSize: 16 }}
+                  placeholderStyle={{ color: theme.fontMedium }}
+                  textStyle={{ color: theme.fontBold, fontSize: 16 }}
                   placeholder="Selecione uma categoria"
                 />
               </View>
@@ -143,7 +147,7 @@ export default function AddLink() {
                   {!isLoading ? (
                     <Text style={styles.buttonSaveText}>Salvar Link</Text>
                   ) : (
-                    <ActivityIndicator color="#fff" size={28} />
+                    <ActivityIndicator color={theme.fontContrast} size={28} />
                   )}
                 </Pressable>
               </View>

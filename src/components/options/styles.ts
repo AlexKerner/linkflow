@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 
 
-export const styles = StyleSheet.create({
+export const createStyles = (theme: any) => StyleSheet.create({
   container: {
     width: "100%",
     borderRadius: 12,

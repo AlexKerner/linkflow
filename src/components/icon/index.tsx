@@ -1,4 +1,4 @@
-import { colors } from "@/src/utils/colors";
+import { useTheme } from "@/src/theme/themeProvider";
 import { Pressable, PressableProps } from "react-native";
 import { styles } from "./styles";
 
@@ -8,11 +8,10 @@ type Props = PressableProps & {
 };
 
 export function Icon({ name, isSelected, ...rest }: Props) {
+  const { theme } = useTheme();
   const elevation = isSelected ? 4 : 0;
-  const shadowColor = isSelected ? colors.light.primaryBlue : "#fff";
-  const backgroundColor = isSelected
-    ? colors.light.primaryBlue
-    : colors.light.bgTertiary;
+  const shadowColor = isSelected ? theme.primaryBlue : theme.fontContrast;
+  const backgroundColor = isSelected ? theme.primaryBlue : theme.bgTertiary;
 
   return (
     <Pressable

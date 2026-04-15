@@ -1,12 +1,16 @@
 import { Header } from "@/src/components/header";
 import { auth } from "@/src/services/firebase/firebaseConfig";
-import { styles } from "@/src/styles/settings/styles";
+import { createStyles } from "@/src/styles/settings/styles";
+import { useTheme } from "@/src/theme/themeProvider";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import { signOut } from "firebase/auth";
 import { Alert, Image, Pressable, Text, View } from "react-native";
 
 export default function Settings() {
+  const { toggleTheme, theme } = useTheme();
+  const styles = createStyles(theme);
+
   async function handleLogout() {
     await GoogleSignin.signOut();
     await signOut(auth);
@@ -38,14 +42,14 @@ export default function Settings() {
           style={styles.logo}
         />
         <Text style={styles.name}>{user?.displayName}</Text>
-        <Text style={styles.email}>alexanderkerner06@gmail.com</Text>
+        <Text style={styles.email}>{user?.email}</Text>
       </View>
       <View style={styles.footer}>
-        <Pressable style={styles.theme}>
+        <Pressable style={styles.theme} onPress={toggleTheme}>
           <MaterialCommunityIcons
             name="theme-light-dark"
             size={26}
-            color="#fff"
+            color={theme.fontContrast}
           />
           <Text style={styles.themeText}>Mudar tema</Text>
         </Pressable>

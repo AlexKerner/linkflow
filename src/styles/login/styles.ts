@@ -1,11 +1,10 @@
 
-import { colors } from "@/src/utils/colors";
 import { StyleSheet } from "react-native";
 
 
-export const styles = StyleSheet.create({
+export const createStyles = (theme: any) => StyleSheet.create({
   container: {
-    backgroundColor: colors.light.bgPrimary,
+    backgroundColor: theme.bgPrimary,
     height: "100%",
     display: "flex",
     alignItems: "center",
@@ -23,12 +22,12 @@ export const styles = StyleSheet.create({
   },
   logoTitle: {
     fontWeight: "800",
-    color: colors.light.fontMedium,
+    color: theme.fontMedium,
     fontSize: 28
   },
   subtitle: {
     fontSize: 17,
-    color: colors.light.fontMedium,
+    color: theme.fontMedium,
     fontWeight: "400",
     lineHeight: 23,
     textAlign: "center",
@@ -37,7 +36,7 @@ export const styles = StyleSheet.create({
   },
   buttonLogin: {
     width: "100%",
-    backgroundColor: colors.light.primaryBlue,
+    backgroundColor: theme.primaryBlue,
     borderRadius: 12,
     display: "flex",
     flexDirection: "row",
@@ -46,7 +45,7 @@ export const styles = StyleSheet.create({
     paddingVertical: 16,
     marginTop: 50,
     gap: 8,
-    shadowColor: colors.light.primaryBlue,
+    shadowColor: theme.primaryBlue,
     elevation: 6
   },
   buttonLoginText: {
@@ -59,7 +58,7 @@ export const styles = StyleSheet.create({
     marginTop: 10,
     paddingHorizontal: 20,
     fontSize: 11,
-    color: colors.light.fontMedium
+    color: theme.fontMedium
   },
   login: {
     display: "flex",

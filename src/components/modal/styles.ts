@@ -1,9 +1,8 @@
-import { colors } from "@/src/utils/colors";
 import { StyleSheet } from "react-native";
 
 
 
-export const styles = StyleSheet.create({
+export const createStyles = (theme: any) => StyleSheet.create({
   modal: {
     flex: 1,
     justifyContent: "center",
@@ -12,12 +11,12 @@ export const styles = StyleSheet.create({
   modalContent: {
     borderRadius: 12,
     width: "80%",
-    backgroundColor: "#fff",
+    backgroundColor: theme.bgCardPrimary,
   },
   modalHeader: {
     display: "flex",
     justifyContent: "space-between",
-    backgroundColor: colors.light.primaryBlue,
+    backgroundColor: theme.primaryBlue,
     paddingHorizontal: 15,
     borderTopStartRadius: 12,
     borderTopEndRadius: 12,
@@ -36,7 +35,7 @@ export const styles = StyleSheet.create({
   },
   modalHeaderText: {
     fontSize: 11,
-    color: "#fff",
+    color: theme.fontContrast,
     fontWeight: "600",
     letterSpacing: 1
   },
@@ -63,7 +62,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: colors.light.bgTertiary,
+    backgroundColor: theme.bgTertiary,
     paddingVertical: 3,
     paddingHorizontal: 6,
     borderRadius: 30,
@@ -72,9 +71,10 @@ export const styles = StyleSheet.create({
   },
   detailsCategoryText: {
     fontSize: 11,
-    color: colors.light.fontBold
+    color: theme.fontBold
   },
   detailsTitle: {
+    color: theme.fontBold,
     fontWeight: "600",
     fontSize: 22
   },
@@ -86,18 +86,18 @@ export const styles = StyleSheet.create({
   },
   detailsLinkText: {
     fontSize: 13,
-    color: colors.light.fontGrey,
+    color: theme.fontMedium,
     maxWidth: "90%"
   },
   detailsDescription: {
     marginHorizontal: 20,
-    backgroundColor: colors.light.bgSecondary,
+    backgroundColor: theme.bgSecondary,
     borderRadius: 12,
     padding: 14
   },
   detailsDescriptionText: {
     fontSize: 14,
-    color: colors.light.fontMedium,
+    color: theme.fontMedium,
     lineHeight: 20
   },
   footer: {

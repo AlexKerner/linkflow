@@ -1,8 +1,8 @@
-import { colors } from "@/src/utils/colors";
+import { useTheme } from "@/src/theme/themeProvider";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
-import { styles } from "./styles";
+import { createStyles } from "./styles";
 
 type Props = {
   name: string;
@@ -11,6 +11,8 @@ type Props = {
 };
 
 export function CategoryList({ name, icon, onDelete }: Props) {
+  const { theme } = useTheme();
+  const styles = createStyles(theme);
   return (
     <View style={styles.container}>
       <View style={styles.content}>
@@ -18,7 +20,7 @@ export function CategoryList({ name, icon, onDelete }: Props) {
           <MaterialCommunityIcons
             name={icon as any}
             size={22}
-            color={colors.light.fontMedium}
+            color={theme.fontMedium}
           />
           <Text style={styles.title} numberOfLines={2} ellipsizeMode="tail">
             {name}

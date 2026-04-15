@@ -1,8 +1,9 @@
 import { MyTabBar } from "@/src/components/tapBar";
-import { colors } from "@/src/utils/colors";
+import { useTheme } from "@/src/theme/themeProvider";
 import { Tabs } from "expo-router";
 
 export default function TabLayout() {
+  const { theme } = useTheme();
   return (
     <Tabs
       tabBar={(props) => <MyTabBar {...props} />}
@@ -10,7 +11,7 @@ export default function TabLayout() {
         animation: "none",
         headerShown: false,
         sceneStyle: {
-          backgroundColor: colors.light.bgPrimary,
+          backgroundColor: theme.bgPrimary,
         },
       }}
     >

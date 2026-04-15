@@ -1,4 +1,4 @@
-import { colors } from "@/src/utils/colors";
+import { useTheme } from "@/src/theme/themeProvider";
 import { Pressable, PressableProps, Text } from "react-native";
 import { styles } from "./styles";
 
@@ -8,12 +8,11 @@ type Props = PressableProps & {
 };
 
 export function Category({ name, isSelected, ...rest }: Props) {
+  const { theme } = useTheme();
   const elevation = isSelected ? 5 : 0;
-  const shadowColor = isSelected ? colors.light.primaryBlue : "#fff";
-  const color = isSelected ? colors.light.bgPrimary : colors.light.fontGrey;
-  const backgroundColor = isSelected
-    ? colors.light.primaryBlue
-    : colors.light.bgTertiary;
+  const shadowColor = theme.fontContrast;
+  const color = isSelected ? theme.fontContrast : theme.fontMedium;
+  const backgroundColor = isSelected ? theme.primaryBlue : theme.bgTertiary;
 
   return (
     <Pressable

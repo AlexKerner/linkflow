@@ -1,11 +1,10 @@
-import { colors } from "@/src/utils/colors";
 import { StyleSheet } from "react-native";
 
 
 
-export const styles = StyleSheet.create({
+export const createStyles = (theme: any) => StyleSheet.create({
   container: {
-    backgroundColor: "#fff",
+    backgroundColor: theme.bgCardPrimary,
     borderRadius: 12,
     paddingHorizontal: 15,
     paddingTop: 20,
@@ -29,7 +28,7 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     fontWeight: "500",
-    color: colors.light.fontBold,
+    color: theme.fontBold,
     maxWidth: 210
   },
   footer: {
@@ -47,7 +46,7 @@ export const styles = StyleSheet.create({
   },
   url: {
     fontSize: 13,
-    color: "#3d618c8d",
+    color: theme.fontMedium,
     maxWidth: 250
   }
 })
