@@ -4,6 +4,7 @@ import { Header } from "@/src/components/header";
 import { Icons } from "@/src/components/icons";
 import { InputForm } from "@/src/components/inputForm";
 import {
+  categoryHasLinks,
   createCategory,
   deleteCategories,
   getCategories,
@@ -52,6 +53,19 @@ export default function AddCategory() {
 
   async function handleDeleteCategory(id: string) {
     try {
+      const hasLinks = await categoryHasLinks(id);
+
+      if (hasLinks) {
+        setVisible(false);
+
+        Toast.show({
+          type: "error",
+          text1: "Não é possível excluir",
+          text2: "Essa categoria possui links vinculados",
+        });
+
+        return;
+      }
       await deleteCategories(id);
       setVisible(false);
       Toast.show({

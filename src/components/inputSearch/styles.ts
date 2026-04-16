@@ -18,6 +18,7 @@ export const createStyles = (theme: any) => StyleSheet.create({
     marginTop: 30
   },
   input: {
-    fontSize: 16
+    fontSize: 16,
+    color: theme.fontContrastSecondary
   }
 })

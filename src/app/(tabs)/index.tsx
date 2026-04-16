@@ -24,13 +24,25 @@ export default function Index() {
   const [selectedLink, setSelectedLink] = useState<Links | null>(null);
   const [loading, setLoading] = useState(true);
   const [visible, setVisible] = useState(false);
+  const [search, setSearch] = useState("");
+  const [filtered, setFiltered] = useState<Links[]>([]);
 
   const { theme } = useTheme();
   const styles = createStyles(theme);
 
-  const filteredLinks = !category
+  const filteredLinksByCategory = !category
     ? links
     : links.filter((link) => link.categoryId === category);
+
+  function handleSearch(text: string) {
+    setSearch(text);
+
+    const filteredData = links.filter((item) =>
+      item.title.toLowerCase().includes(text.toLowerCase()),
+    );
+
+    setFiltered(filteredData);
+  }
 
   const categoriesMap = categories.reduce(
     (acc, cat) => {
@@ -102,14 +114,18 @@ export default function Index() {
   return (
     <View style={styles.container}>
       <Header />
-      <InputSearch placeholder="Pesquisar seu link..." icon="search" />
+      <InputSearch
+        placeholder="Pesquisar seu link..."
+        icon="search"
+        onChangeText={handleSearch}
+      />
 
       <Categories showAll={true} selected={category} onChange={setCategory} />
 
       {!loading ? (
         <FlatList
           showsVerticalScrollIndicator={false}
-          data={filteredLinks}
+          data={search ? filtered : filteredLinksByCategory}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => {
             const category = categoriesMap[item.categoryId];
@@ -141,9 +157,7 @@ export default function Index() {
               );
             }
             return (
-              <Text style={{ color: theme.fontBold }}>
-                Não há nenhum link com essa categoria ainda.
-              </Text>
+              <Text style={{ color: theme.fontBold }}>Não há nenhum link.</Text>
             );
           }}
         />

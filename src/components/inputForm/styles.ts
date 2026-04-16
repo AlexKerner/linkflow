@@ -14,7 +14,8 @@ export const createStyles = (theme: any) => StyleSheet.create({
     alignItems: "center",
   },
   input: {
-    fontSize: 16
+    fontSize: 16,
+    color: theme.fontContrastSecondary
   }
 
 })

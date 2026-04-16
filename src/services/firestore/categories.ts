@@ -33,6 +33,17 @@ export async function getCategories(): Promise<Category[]> {
   }));
 }
 
+export async function categoryHasLinks(categoryId: string) {
+  const q = query(
+    collection(db, "links"),
+    where("categoryId", "==", categoryId)
+  );
+
+  const snapshot = await getDocs(q);
+
+  return !snapshot.empty;
+}
+
 export async function deleteCategories(id: string) {
   await deleteDoc(doc(db, "categories", id));
 }

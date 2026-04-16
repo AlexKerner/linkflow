@@ -5,7 +5,6 @@ import { createLink } from "@/src/services/firestore/links";
 import { createStyles } from "@/src/styles/addLink/styles";
 import { useTheme } from "@/src/theme/themeProvider";
 import { Category } from "@/src/utils/categories";
-import { colors } from "@/src/utils/colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useFocusEffect } from "expo-router";
 import React, { useCallback, useState } from "react";
@@ -41,7 +40,7 @@ export default function AddLink() {
         <MaterialCommunityIcons
           name={cat.icon as any}
           size={18}
-          color={colors.light.fontBold}
+          color={theme.fontBold}
         />
       ) : null,
   }));

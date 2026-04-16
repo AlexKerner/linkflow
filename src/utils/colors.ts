@@ -23,7 +23,8 @@ export const colors = {
     fontMedium: "#8C909F",
     fontLight: "#C2C6D6",
     fontContrast: "#0A1224",
-    fontContrastSecondary: "#DAE2FD"
+    fontContrastSecondary: "#DAE2FD",
+    fontGrey: "#4C5164",
   }
 
 }
