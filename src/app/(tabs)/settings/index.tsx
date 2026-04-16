@@ -1,3 +1,4 @@
+import { ConfirmDialog } from "@/src/components/confirmDialog";
 import { Header } from "@/src/components/header";
 import { auth } from "@/src/services/firebase/firebaseConfig";
 import { createStyles } from "@/src/styles/settings/styles";
@@ -5,32 +6,20 @@ import { useTheme } from "@/src/theme/themeProvider";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import { signOut } from "firebase/auth";
-import { Alert, Image, Pressable, Text, View } from "react-native";
+import { useState } from "react";
+import { Image, Pressable, Text, View } from "react-native";
 
 export default function Settings() {
   const { toggleTheme, theme } = useTheme();
+  const [visible, setVisible] = useState(false);
   const styles = createStyles(theme);
 
   async function handleLogout() {
     await GoogleSignin.signOut();
     await signOut(auth);
+    setVisible(false);
   }
-  function confirmLogout() {
-    try {
-      Alert.alert("Sair", "Deseja encerrar sessão?", [
-        {
-          style: "cancel",
-          text: "Não",
-        },
-        {
-          text: "Sim",
-          onPress: () => handleLogout(),
-        },
-      ]);
-    } catch (error) {
-      throw error;
-    }
-  }
+
   const user = auth.currentUser;
   const photo = user?.photoURL?.replace(/s\d+-c/, "s400-c");
   return (
@@ -53,11 +42,18 @@ export default function Settings() {
           />
           <Text style={styles.themeText}>Mudar tema</Text>
         </Pressable>
-        <Pressable style={styles.logout} onPress={confirmLogout}>
+        <Pressable style={styles.logout} onPress={() => setVisible(true)}>
           <MaterialCommunityIcons name="logout" size={26} color="#b22321" />
           <Text style={styles.logoutText}>Encerrar sessão</Text>
         </Pressable>
       </View>
+      <ConfirmDialog
+        visible={visible}
+        title="Sair"
+        message="Deseja realmente sair desta conta?"
+        onConfirm={handleLogout}
+        onCancel={() => setVisible(false)}
+      />
     </View>
   );
 }

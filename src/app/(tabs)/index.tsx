@@ -1,4 +1,5 @@
 import { Categories } from "@/src/components/categories";
+import { ConfirmDialog } from "@/src/components/confirmDialog";
 import { Header } from "@/src/components/header";
 import { InputSearch } from "@/src/components/inputSearch";
 import { Link } from "@/src/components/link";
@@ -12,14 +13,8 @@ import { colors } from "@/src/utils/colors";
 import { Link as Links } from "@/src/utils/links";
 import { useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
-import {
-  ActivityIndicator,
-  Alert,
-  FlatList,
-  Linking,
-  Text,
-  View,
-} from "react-native";
+import { ActivityIndicator, FlatList, Linking, Text, View } from "react-native";
+import Toast from "react-native-toast-message";
 
 export default function Index() {
   const [category, setCategory] = useState<string | null>(null);
@@ -28,6 +23,7 @@ export default function Index() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedLink, setSelectedLink] = useState<Links | null>(null);
   const [loading, setLoading] = useState(true);
+  const [visible, setVisible] = useState(false);
 
   const { theme } = useTheme();
   const styles = createStyles(theme);
@@ -53,30 +49,21 @@ export default function Index() {
 
     try {
       await deleteLink(selectedLink.id);
-
       setLinks((prev) => prev.filter((link) => link.id !== selectedLink.id));
-
       setShowModal(false);
+      setVisible(false);
+      Toast.show({
+        type: "success",
+        text1: "Link excluído com sucesso.",
+      });
       setSelectedLink(null);
     } catch (e) {
+      Toast.show({
+        type: "error",
+        text1: "Erro ao excluir link.",
+      });
+      setVisible(false);
       console.log("erro ao deletar", e);
-    }
-  }
-
-  function confirmDelete() {
-    try {
-      Alert.alert("Excluir", "Deseja realmente excluir esse link?", [
-        {
-          style: "cancel",
-          text: "Não",
-        },
-        {
-          text: "Sim",
-          onPress: () => handleDeleteLink(),
-        },
-      ]);
-    } catch (error) {
-      throw error;
     }
   }
 
@@ -87,7 +74,10 @@ export default function Index() {
     try {
       await Linking.openURL(url);
     } catch (error) {
-      Alert.alert("Link", "Não foi possível abrir o link.");
+      Toast.show({
+        type: "error",
+        text1: "Não foi possível abrir o link.",
+      });
       console.log(error);
     }
   }
@@ -112,7 +102,6 @@ export default function Index() {
   return (
     <View style={styles.container}>
       <Header />
-
       <InputSearch placeholder="Pesquisar seu link..." icon="search" />
 
       <Categories showAll={true} selected={category} onChange={setCategory} />
@@ -143,7 +132,7 @@ export default function Index() {
           ListEmptyComponent={() => {
             if (links.length === 0) {
               return (
-                <Text style={{ color: colors.light.fontBold }}>
+                <Text style={{ color: theme.fontBold }}>
                   Ainda não foi criado nenhum link. Vá para a página
                   "Categorias", crie sua primeira categoria para que possa ser
                   criado um link, e depois vá para "Novo link", para criar seu
@@ -152,7 +141,7 @@ export default function Index() {
               );
             }
             return (
-              <Text style={{ color: colors.light.fontBold }}>
+              <Text style={{ color: theme.fontBold }}>
                 Não há nenhum link com essa categoria ainda.
               </Text>
             );
@@ -171,12 +160,20 @@ export default function Index() {
         description={selectedLink?.description ?? "Sem descrição"}
         url={selectedLink?.url ?? ""}
         category={selectedCategory?.name ?? "Sem categoria"}
-        onDeleteLink={confirmDelete}
+        onDeleteLink={() => setVisible(true)}
         onOpenLink={() => handleOpen(selectedLink?.url || "")}
         onPress={() => {
           setShowModal(false);
           setSelectedLink(null);
         }}
+      />
+
+      <ConfirmDialog
+        visible={visible}
+        title="Excluir"
+        message="Deseja realmente excluír esse link?"
+        onConfirm={handleDeleteLink}
+        onCancel={() => setVisible(false)}
       />
     </View>
   );

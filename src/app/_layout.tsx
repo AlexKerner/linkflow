@@ -3,6 +3,7 @@ import { Stack, router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
+import Toast from "react-native-toast-message";
 import { ThemeProvider } from "../theme/themeProvider";
 
 export default function RootLayout() {
@@ -26,7 +27,7 @@ export default function RootLayout() {
           headerShown: false,
         }}
       />
-      ;
+      <Toast />
     </ThemeProvider>
   );
 }

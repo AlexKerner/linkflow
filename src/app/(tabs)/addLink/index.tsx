@@ -11,7 +11,6 @@ import { useFocusEffect } from "expo-router";
 import React, { useCallback, useState } from "react";
 import {
   ActivityIndicator,
-  Alert,
   KeyboardAvoidingView,
   Platform,
   Pressable,
@@ -20,6 +19,7 @@ import {
   View,
 } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
+import Toast from "react-native-toast-message";
 
 export default function AddLink() {
   const [isLoading, setIsLoading] = useState(false);
@@ -49,23 +49,37 @@ export default function AddLink() {
   async function handleCreateLink() {
     setIsLoading(true);
     if (!title || !description || !url) {
-      Alert.alert("Preencha todos os campos.");
+      Toast.show({
+        type: "error",
+        text1: "Preencha todos os campos.",
+      });
       setIsLoading(false);
+      return;
     }
     if (!category) {
-      Alert.alert("Selecione uma categoria.");
+      Toast.show({
+        type: "error",
+        text1: "Selecione uma categoria.",
+      });
       setIsLoading(false);
       return;
     }
     try {
       await createLink({ title, url, description, categoryId: category });
       setIsLoading(false);
-      Alert.alert("Link criado com sucesso.");
+      Toast.show({
+        type: "success",
+        text1: "Link criado com sucesso.",
+      });
       console.log("Link criado.");
       (setTitle(""), setDescription(""));
       setUrl("");
       setCategory("");
     } catch (error) {
+      Toast.show({
+        type: "error",
+        text1: "Erro ao criar link.",
+      });
       console.log("Erro ao criar link.", error);
     }
   }
@@ -91,7 +105,7 @@ export default function AddLink() {
         style={{ flex: 1 }}
       >
         <ScrollView
-          contentContainerStyle={{ paddingBottom: 130 }}
+          contentContainerStyle={{ paddingBottom: 120 }}
           showsVerticalScrollIndicator={false}
         >
           <View style={styles.content}>

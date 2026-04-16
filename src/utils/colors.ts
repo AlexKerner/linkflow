@@ -11,6 +11,7 @@ export const colors = {
     fontGrey: "#4C5164",
     fontContrast: "#fff",
     fontLight: "#DDE1F9",
+    fontContrastSecondary: "#131B2E"
   },
   dark: {
     primaryBlue: "#4D8EFF",
@@ -21,7 +22,8 @@ export const colors = {
     fontBold: "#DAE2FD",
     fontMedium: "#8C909F",
     fontLight: "#C2C6D6",
-    fontContrast: "#0A1224"
+    fontContrast: "#0A1224",
+    fontContrastSecondary: "#DAE2FD"
   }
 
 }

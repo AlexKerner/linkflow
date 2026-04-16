@@ -1,4 +1,5 @@
 import { CategoryList } from "@/src/components/categoryList";
+import { ConfirmDialog } from "@/src/components/confirmDialog";
 import { Header } from "@/src/components/header";
 import { Icons } from "@/src/components/icons";
 import { InputForm } from "@/src/components/inputForm";
@@ -12,26 +13,39 @@ import { useTheme } from "@/src/theme/themeProvider";
 import { Category } from "@/src/utils/categories";
 import { useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
-import { Alert, FlatList, Pressable, Text, View } from "react-native";
+import { FlatList, Pressable, Text, View } from "react-native";
+import Toast from "react-native-toast-message";
 
 export default function AddCategory() {
   const [icon, setIcon] = useState("");
   const [name, setName] = useState("");
   const [categories, setCategories] = useState<Category[]>([]);
+  const [categoryId, setCategoryId] = useState("");
+  const [visible, setVisible] = useState(false);
   const { theme } = useTheme();
   const styles = createStyles(theme);
 
   async function handleCreateCategory() {
     if (!name || !icon) {
-      Alert.alert("Preencha todos os campos.");
+      Toast.show({
+        type: "error",
+        text1: "Preencha todos os campos.",
+      });
       return;
     }
     try {
       await createCategory(name, icon);
-      Alert.alert("Categoria criada com sucesso.");
+      Toast.show({
+        type: "success",
+        text1: "Categoria criada com sucesso.",
+      });
       console.log("Categoria criada com sucesso.");
       (setName(""), setIcon(""));
     } catch (error) {
+      Toast.show({
+        type: "error",
+        text1: "Erro ao criar categoria.",
+      });
       console.log("Erro ao criar categoria.", error);
     }
   }
@@ -39,25 +53,18 @@ export default function AddCategory() {
   async function handleDeleteCategory(id: string) {
     try {
       await deleteCategories(id);
+      setVisible(false);
+      Toast.show({
+        type: "success",
+        text1: "Categoria deletada.",
+      });
     } catch (e) {
+      Toast.show({
+        type: "error",
+        text1: "Erro ao deletar categoria.",
+      });
+      setVisible(false);
       console.log("erro ao deletar", e);
-    }
-  }
-
-  function confirmDelete(id: string) {
-    try {
-      Alert.alert("Excluir", "Deseja realmente excluir esse link?", [
-        {
-          style: "cancel",
-          text: "Não",
-        },
-        {
-          text: "Sim",
-          onPress: () => handleDeleteCategory(id),
-        },
-      ]);
-    } catch (error) {
-      throw error;
     }
   }
 
@@ -118,7 +125,9 @@ export default function AddCategory() {
             <CategoryList
               icon={item.icon}
               name={item.name}
-              onDelete={() => confirmDelete(item.id)}
+              onDelete={() => {
+                (setCategoryId(item.id), setVisible(true));
+              }}
             />
           );
         }}
@@ -131,6 +140,13 @@ export default function AddCategory() {
             </Text>
           );
         }}
+      />
+      <ConfirmDialog
+        visible={visible}
+        title="Excluir"
+        message="Deseja realmente excluír esse link?"
+        onConfirm={() => handleDeleteCategory(categoryId)}
+        onCancel={() => setVisible(false)}
       />
     </View>
   );
