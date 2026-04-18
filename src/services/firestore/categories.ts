@@ -34,9 +34,13 @@ export async function getCategories(): Promise<Category[]> {
 }
 
 export async function categoryHasLinks(categoryId: string) {
+  const user = auth.currentUser;
+
+  if (!user) return false;
   const q = query(
     collection(db, "links"),
-    where("categoryId", "==", categoryId)
+    where("categoryId", "==", categoryId),
+    where("userId", "==", user.uid)
   );
 
   const snapshot = await getDocs(q);

@@ -1,9 +1,8 @@
 import { auth } from "@/src/services/firebase/firebaseConfig";
-import { Stack, router } from "expo-router";
-import { StatusBar } from "expo-status-bar";
+import { router } from "expo-router";
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
-import Toast from "react-native-toast-message";
+import { AppContent } from "../components/appContent";
 import { ThemeProvider } from "../theme/themeProvider";
 
 export default function RootLayout() {
@@ -21,13 +20,7 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider>
-      <StatusBar style="light" />
-      <Stack
-        screenOptions={{
-          headerShown: false,
-        }}
-      />
-      <Toast />
+      <AppContent />
     </ThemeProvider>
   );
 }
