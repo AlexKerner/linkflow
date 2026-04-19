@@ -1,3 +1,4 @@
+import { AppText as Text } from "@/src/components/appText";
 import { Header } from "@/src/components/header";
 import { InputForm } from "@/src/components/inputForm";
 import { getCategories } from "@/src/services/firestore/categories";
@@ -14,7 +15,6 @@ import {
   Platform,
   Pressable,
   ScrollView,
-  Text,
   View,
 } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";

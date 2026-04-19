@@ -29,7 +29,7 @@ export const createStyles = (theme: any) => StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    fontWeight: "500",
+    fontFamily: theme.fonts.bold,
     color: theme.fontBold,
     maxWidth: 210
   },

@@ -15,7 +15,8 @@ export const createStyles = (theme: any) => StyleSheet.create({
   },
   input: {
     fontSize: 16,
-    color: theme.fontContrastSecondary
+    color: theme.fontContrastSecondary,
+    fontFamily: theme.fonts.regular
   }
 
 })

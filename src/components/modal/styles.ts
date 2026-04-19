@@ -36,7 +36,7 @@ export const createStyles = (theme: any) => StyleSheet.create({
   modalHeaderText: {
     fontSize: 11,
     color: theme.fontContrast,
-    fontWeight: "600",
+    fontFamily: theme.fonts.semiBold,
     letterSpacing: 1
   },
   modalHeaderClose: {
@@ -75,7 +75,7 @@ export const createStyles = (theme: any) => StyleSheet.create({
   },
   detailsTitle: {
     color: theme.fontBold,
-    fontWeight: "600",
+    fontFamily: theme.fonts.semiBold,
     fontSize: 22
   },
   detailsLink: {

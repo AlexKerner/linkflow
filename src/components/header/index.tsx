@@ -1,5 +1,6 @@
+import { AppText as Text } from "@/src/components/appText";
 import { useTheme } from "@/src/theme/themeProvider";
-import { Image, Text, View } from "react-native";
+import { Image, View } from "react-native";
 import { createStyles } from "./styles";
 
 export function Header() {

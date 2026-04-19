@@ -1,3 +1,4 @@
+import { AppText as Text } from "@/src/components/appText";
 import { ConfirmDialog } from "@/src/components/confirmDialog";
 import { Header } from "@/src/components/header";
 import { auth } from "@/src/services/firebase/firebaseConfig";
@@ -7,7 +8,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import { signOut } from "firebase/auth";
 import { useState } from "react";
-import { Image, Pressable, Text, View } from "react-native";
+import { Image, Pressable, View } from "react-native";
 
 export default function Settings() {
   const { toggleTheme, theme } = useTheme();

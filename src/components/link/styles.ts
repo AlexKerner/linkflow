@@ -23,11 +23,12 @@ export const createStyles = (theme: any) => StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "center",
     gap: 15
   },
   title: {
     fontSize: 18,
-    fontWeight: "500",
+    fontFamily: theme.fonts.semiBold,
     color: theme.fontBold,
     maxWidth: 210
   },

@@ -1,6 +1,7 @@
+import { AppText as Text } from "@/src/components/appText";
 import { useTheme } from "@/src/theme/themeProvider";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Pressable, PressableProps, Text } from "react-native";
+import { Pressable, PressableProps } from "react-native";
 import { createStyles } from "./styles";
 
 type Props = PressableProps & {

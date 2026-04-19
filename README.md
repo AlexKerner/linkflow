@@ -18,9 +18,17 @@ Com ele, você pode criar categorias, salvar links e manter tudo organizado em u
 
 ## Demonstração
 
-<!-- Coloque aqui o GIF do app -->
-
 ![App Demo](./assets/demo.gif)
+
+---
+
+## 🖼️ Screenshots
+
+<p align="center">
+  <img src="./assets/demo/categoryFiltered.jpg" width="200" />
+  <img src="./assets/demo/modal.jpg" width="200" />
+  <img src="./assets/demo/search.jpg" width="200" />
+</p>
 
 ---
 
@@ -48,7 +56,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 Você pode baixar e testar o aplicativo através do link abaixo:
 
-👉 [Download APK](https://github.com/seu-usuario/seu-repo/releases)
+👉 [Download APK](https://github.com/AlexKerner/linkflow/releases/tag/v1.0.0)
 
 ---
 
@@ -56,10 +64,10 @@ Você pode baixar e testar o aplicativo através do link abaixo:
 
 ```bash
 # Clonar repositório
-git clone https://github.com/seu-usuario/seu-repo.git
+git clone https://github.com/AlexKerner/linkflow.git
 
 # Entrar na pasta
-cd seu-repo
+cd linkflow
 
 # Instalar dependências
 npm install
@@ -76,5 +84,3 @@ npx expo start
 npx expo prebuild
 eas build -p android --profile preview
 ```
-
----

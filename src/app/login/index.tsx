@@ -1,10 +1,11 @@
+import { AppText as Text } from "@/src/components/appText";
 import { signInWithGoogle } from "@/src/services/google/googleAuth";
 import { createStyles } from "@/src/styles/login/styles";
 import { useTheme } from "@/src/theme/themeProvider";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { useState } from "react";
-import { ActivityIndicator, Image, Pressable, Text, View } from "react-native";
+import { ActivityIndicator, Image, Pressable, View } from "react-native";
 
 export default function Login() {
   const { theme } = useTheme();

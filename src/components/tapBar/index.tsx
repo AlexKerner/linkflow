@@ -1,7 +1,8 @@
+import { AppText as Text } from "@/src/components/appText";
 import { useTheme } from "@/src/theme/themeProvider";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
-import { Text, TouchableOpacity, View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import { createStyles } from "./styles";
 
 export function MyTabBar({

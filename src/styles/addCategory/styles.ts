@@ -17,7 +17,7 @@ export const createStyles = (theme: any) => StyleSheet.create({
   },
   h1: {
     fontSize: 34,
-    fontWeight: "600",
+    fontFamily: theme.fonts.semiBold,
     color: theme.fontBold
   },
   subTitle: {
@@ -34,7 +34,7 @@ export const createStyles = (theme: any) => StyleSheet.create({
   label: {
     fontSize: 16,
     color: theme.fontMedium,
-    fontWeight: "500"
+    fontFamily: theme.fonts.semiBold
   },
   form: {
     display: "flex",
@@ -67,8 +67,8 @@ export const createStyles = (theme: any) => StyleSheet.create({
   },
   buttonText: {
     fontSize: 16,
-    fontWeight: "500",
-    color: theme.fontContrast
+    color: theme.fontContrast,
+    fontFamily: theme.fonts.semiBold
   },
   categories: {
     flex: 1,

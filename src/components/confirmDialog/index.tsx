@@ -1,6 +1,7 @@
+import { AppText as Text } from "@/src/components/appText";
 import { useTheme } from "@/src/theme/themeProvider";
 import { BlurView } from "expo-blur";
-import { Modal, Pressable, StyleSheet, Text, View } from "react-native";
+import { Modal, Pressable, StyleSheet, View } from "react-native";
 import { createStyles } from "./styles";
 
 type Props = {

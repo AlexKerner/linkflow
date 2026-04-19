@@ -1,6 +1,7 @@
+import { AppText as Text } from "@/src/components/appText";
 import { useTheme } from "@/src/theme/themeProvider";
-import { Pressable, PressableProps, Text } from "react-native";
-import { styles } from "./styles";
+import { Pressable, PressableProps } from "react-native";
+import { createStyles } from "./styles";
 
 type Props = PressableProps & {
   name: string;
@@ -9,6 +10,7 @@ type Props = PressableProps & {
 
 export function Category({ name, isSelected, ...rest }: Props) {
   const { theme } = useTheme();
+  const styles = createStyles(theme);
   const elevation = isSelected ? 5 : 0;
   const shadowColor = theme.fontContrast;
   const color = isSelected ? theme.fontContrast : theme.fontMedium;

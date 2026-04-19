@@ -1,14 +1,8 @@
+import { AppText as Text } from "@/src/components/appText";
 import { useTheme } from "@/src/theme/themeProvider";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { BlurView } from "expo-blur";
-import {
-  Modal,
-  ModalProps,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { Modal, ModalProps, Pressable, StyleSheet, View } from "react-native";
 import { Options } from "../options";
 import { createStyles } from "./styles";
 

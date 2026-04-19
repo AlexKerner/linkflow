@@ -12,7 +12,7 @@ export const createStyles = (theme: any) => StyleSheet.create({
     marginBottom: 30,
     maxWidth: 320,
     fontSize: 32,
-    fontWeight: "600",
+    fontFamily: theme.fonts.semiBold,
     color: theme.fontBold
   },
   content: {
@@ -35,7 +35,7 @@ export const createStyles = (theme: any) => StyleSheet.create({
   label: {
     fontSize: 16,
     color: theme.fontMedium,
-    fontWeight: "500"
+    fontFamily: theme.fonts.semiBold
   },
   footer: {
     borderTopWidth: 1,
@@ -62,7 +62,7 @@ export const createStyles = (theme: any) => StyleSheet.create({
   buttonSaveText: {
     color: theme.fontContrast,
     fontSize: 16,
-    fontWeight: "500"
+    fontFamily: theme.fonts.semiBold
   },
   drop: {
     backgroundColor: theme.bgSecondary,

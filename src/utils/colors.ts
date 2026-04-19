@@ -26,5 +26,4 @@ export const colors = {
     fontContrastSecondary: "#DAE2FD",
     fontGrey: "#4C5164",
   }
-
 }

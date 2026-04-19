@@ -21,14 +21,13 @@ export const createStyles = (theme: any) => StyleSheet.create({
     height: 100
   },
   logoTitle: {
-    fontWeight: "800",
+    fontFamily: theme.fonts.bold,
     color: theme.fontMedium,
     fontSize: 28
   },
   subtitle: {
     fontSize: 17,
     color: theme.fontMedium,
-    fontWeight: "400",
     lineHeight: 23,
     textAlign: "center",
     marginTop: 10,
@@ -50,8 +49,8 @@ export const createStyles = (theme: any) => StyleSheet.create({
   },
   buttonLoginText: {
     color: "#fff",
-    fontWeight: "500",
-    fontSize: 16
+    fontSize: 16,
+    fontFamily: theme.fonts.semiBold
   },
   terms: {
     textAlign: "center",

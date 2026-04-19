@@ -16,11 +16,11 @@ export const createStyles = (theme: any) => StyleSheet.create({
   primaryTitle: {
     color: "#fff",
     fontSize: 16,
-    fontWeight: "500"
+    fontFamily: theme.fonts.semiBold
   },
   secondaryTitle: {
     color: "#b22321",
     fontSize: 16,
-    fontWeight: "500"
+    fontFamily: theme.fonts.semiBold
   }
 })

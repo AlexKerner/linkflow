@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-export const styles = StyleSheet.create({
+export const createStyles = (theme: any) => StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
@@ -10,6 +10,6 @@ export const styles = StyleSheet.create({
   },
   name: {
     fontSize: 14,
-    fontWeight: "600",
+    fontFamily: theme.fonts.semiBold
   }
 })

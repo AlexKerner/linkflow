@@ -12,7 +12,7 @@ export const createStyles = (theme: any) => StyleSheet.create({
   },
   title: {
     fontSize: 22,
-    fontWeight: "900",
+    fontFamily: theme.fonts.bold,
     color: theme.primaryBlue
   },
   logo: {

@@ -19,7 +19,7 @@ export const createStyles = (theme: any) => StyleSheet.create({
   h1: {
     marginTop: 40,
     fontSize: 34,
-    fontWeight: "700",
+    fontFamily: theme.fonts.bold,
     color: theme.fontBold
   },
   logo: {
@@ -30,14 +30,14 @@ export const createStyles = (theme: any) => StyleSheet.create({
   name: {
     marginTop: 14,
     fontSize: 22,
-    fontWeight: "600",
+    fontFamily: theme.fonts.semiBold,
     color: theme.fontBold,
     textAlign: "center"
   },
   email: {
     marginTop: 8,
     fontSize: 13,
-    fontWeight: "500",
+    fontFamily: theme.fonts.semiBold,
     color: theme.fontMedium
   },
   footer: {
@@ -76,11 +76,11 @@ export const createStyles = (theme: any) => StyleSheet.create({
   themeText: {
     color: theme.fontContrast,
     fontSize: 17,
-    fontWeight: "500"
+    fontFamily: theme.fonts.semiBold
   },
   logoutText: {
     fontSize: 17,
-    fontWeight: "500",
+    fontFamily: theme.fonts.semiBold,
     color: theme.fontBold
   }
 })

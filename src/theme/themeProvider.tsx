@@ -8,11 +8,20 @@ import {
 } from "react";
 import { useColorScheme } from "react-native";
 import { colors } from "../utils/colors";
+import { fonts } from "../utils/fonts";
 
 type ThemeMode = "light" | "dark";
 
+type ThemeType = typeof colors.light & {
+  fonts: {
+    regular: string;
+    semiBold: string;
+    bold: string;
+  };
+};
+
 type ThemeContextType = {
-  theme: typeof colors.light;
+  theme: ThemeType;
   mode: ThemeMode;
   toggleTheme: () => void;
 };
@@ -44,7 +53,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     AsyncStorage.setItem("@theme", mode);
   }, [mode]);
 
-  const theme = mode === "dark" ? colors.dark : colors.light;
+  const theme = { ...(mode === "dark" ? colors.dark : colors.light), fonts };
 
   function toggleTheme() {
     setMode((prev) => (prev === "dark" ? "light" : "dark"));

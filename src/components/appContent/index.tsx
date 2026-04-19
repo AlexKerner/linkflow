@@ -9,13 +9,11 @@ export function AppContent() {
   return (
     <>
       <StatusBar style={mode === "dark" ? "light" : "dark"} />
-
       <Stack
         screenOptions={{
           headerShown: false,
         }}
       />
-
       <Toast />
     </>
   );

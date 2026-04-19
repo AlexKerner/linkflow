@@ -1,3 +1,4 @@
+import { AppText as Text } from "@/src/components/appText";
 import { CategoryList } from "@/src/components/categoryList";
 import { ConfirmDialog } from "@/src/components/confirmDialog";
 import { Header } from "@/src/components/header";
@@ -14,7 +15,7 @@ import { useTheme } from "@/src/theme/themeProvider";
 import { Category } from "@/src/utils/categories";
 import { useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
-import { FlatList, Pressable, Text, View } from "react-native";
+import { FlatList, Pressable, View } from "react-native";
 import Toast from "react-native-toast-message";
 
 export default function AddCategory() {
@@ -150,7 +151,7 @@ export default function AddCategory() {
         ListEmptyComponent={() => {
           return (
             <Text style={{ color: theme.fontBold }}>
-              Não há nenhum link com essa categoria ainda.
+              Não há nenhuma categoria ainda.
             </Text>
           );
         }}
@@ -158,7 +159,7 @@ export default function AddCategory() {
       <ConfirmDialog
         visible={visible}
         title="Excluir"
-        message="Deseja realmente excluír esse link?"
+        message="Deseja realmente excluír essa categoria?"
         onConfirm={() => handleDeleteCategory(categoryId)}
         onCancel={() => setVisible(false)}
       />

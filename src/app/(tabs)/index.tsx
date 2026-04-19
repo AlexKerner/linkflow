@@ -1,3 +1,4 @@
+import { AppText as Text } from "@/src/components/appText";
 import { Categories } from "@/src/components/categories";
 import { ConfirmDialog } from "@/src/components/confirmDialog";
 import { Header } from "@/src/components/header";
@@ -13,7 +14,7 @@ import { colors } from "@/src/utils/colors";
 import { Link as Links } from "@/src/utils/links";
 import { useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
-import { ActivityIndicator, FlatList, Linking, Text, View } from "react-native";
+import { ActivityIndicator, FlatList, Linking, View } from "react-native";
 import Toast from "react-native-toast-message";
 
 export default function Index() {
