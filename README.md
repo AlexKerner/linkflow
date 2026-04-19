@@ -19,12 +19,12 @@ Com ele, você pode criar categorias, salvar links e manter tudo organizado em u
 ## Demonstração
 
 <p align="center">
-  <img src="./assets/demo/demo.gif" width="220" />
+  <img src="./assets/demo/demo.gif" width="200" />
 </p>
 
 ---
 
-## 🖼️ Screenshots
+## Screenshots
 
 <p align="center">
   <img src="./assets/demo/categoryFiltered.jpg" width="200" />
