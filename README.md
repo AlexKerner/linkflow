@@ -19,7 +19,7 @@ Com ele, você pode criar categorias, salvar links e manter tudo organizado em u
 ## Demonstração
 
 <p align="center">
-  <img src="./assets/demo/demo.gif" width="300" />
+  <img src="./assets/demo/demo.gif" width="220" />
 </p>
 
 ---
