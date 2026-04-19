@@ -18,7 +18,9 @@ Com ele, você pode criar categorias, salvar links e manter tudo organizado em u
 
 ## Demonstração
 
-![App Demo](./assets/demo/demo.gif)
+<p align="center">
+  <img src="./assets/demo/demo.gif" width="300" />
+</p>
 
 ---
 
