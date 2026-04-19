@@ -1,4 +1,4 @@
-# Link Manager
+# LinkFlow
 
 Um aplicativo mobile para organizar e gerenciar seus links de forma simples e eficiente.
 Com ele, você pode criar categorias, salvar links e manter tudo organizado em um só lugar.
@@ -18,7 +18,7 @@ Com ele, você pode criar categorias, salvar links e manter tudo organizado em u
 
 ## Demonstração
 
-![App Demo](./assets/demo.gif)
+![App Demo](./assets/demo/demo.gif)
 
 ---
 
